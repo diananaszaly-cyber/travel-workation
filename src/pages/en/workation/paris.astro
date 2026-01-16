@@ -1,0 +1,68 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+const city = "Paris";
+const title = `Workation in ${city}: style, cafés & big-city energy`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "classic, urban, inspiring";
+
+const cards = [
+  { label: "Timezone", value: "CET/CEST" },
+  { label: "WiFi", value: "8/10" },
+  { label: "Noise", value: "7/10" },
+  { label: "Costs", value: "3/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "8/10" },
+  { label: "Noise", value: "7/10", note: "(highly neighborhood dependent)" },
+  { label: "Coworking density", value: "8/10" },
+  { label: "Café friendliness", value: "6/10", note: "(not every café loves laptops)" },
+  { label: "Night safety", value: "7/10" },
+  { label: "Costs", value: "3/10" },
+];
+
+const areas = [
+  { name: "Le Marais (3rd/4th)", desc: "central, many options, lively" },
+  { name: "Batignolles (17th)", desc: "a bit calmer, local vibe" },
+  { name: "Montparnasse (14th)", desc: "practical, well connected" },
+];
+
+const coworking = [
+  { name: "Coworking (TBD)", desc: "we’ll add 2–3 real spots next", url: "" },
+  { name: "Coworking (TBD)", desc: "research + links together", url: "" },
+  { name: "Tip", desc: "For calls: coworking beats cafés", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "test first (rules vary)" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/paris"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

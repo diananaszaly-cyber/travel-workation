@@ -1,0 +1,68 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+const city = "Málaga";
+const title = `Workation in ${city}: sun, sea & relaxed workdays`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "mediterranean, relaxed, very pleasant";
+
+const cards = [
+  { label: "Timezone", value: "CET/CEST" },
+  { label: "WiFi", value: "8/10" },
+  { label: "Noise", value: "5/10" },
+  { label: "Costs", value: "7/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "8/10" },
+  { label: "Noise", value: "5/10", note: "(old town can be livelier at night)" },
+  { label: "Coworking density", value: "6/10" },
+  { label: "Café friendliness", value: "7/10" },
+  { label: "Night safety", value: "8/10" },
+  { label: "Costs", value: "7/10" },
+];
+
+const areas = [
+  { name: "Centro Histórico", desc: "central, beautiful, livelier at night" },
+  { name: "Soho", desc: "creative, good spots, city vibe" },
+  { name: "Pedregalejo", desc: "calmer by the sea, great for longer stays" },
+];
+
+const coworking = [
+  { name: "Coworking (TBD)", desc: "we’ll add 2–3 real spots next", url: "" },
+  { name: "Coworking (TBD)", desc: "research + links together", url: "" },
+  { name: "Tip", desc: "For focus: stay outside the old town", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "test weekdays in the morning" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/malaga"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

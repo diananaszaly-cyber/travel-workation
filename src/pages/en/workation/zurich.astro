@@ -1,0 +1,69 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+
+const city = "Zurich";
+const title = `Workation in ${city}: focus deeply & live well`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "calm, clean, efficient";
+
+const cards = [
+  { label: "Timezone", value: "CET/CEST" },
+  { label: "WiFi", value: "9/10" },
+  { label: "Noise", value: "4/10" },
+  { label: "Costs", value: "3/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "9/10" },
+  { label: "Noise", value: "4/10", note: "(mostly calm; nightlife depends on area)" },
+  { label: "Coworking density", value: "7/10" },
+  { label: "Café friendliness", value: "7/10" },
+  { label: "Night safety", value: "9/10" },
+  { label: "Costs", value: "3/10", note: "(pricey — plan your budget)" },
+];
+
+const areas = [
+  { name: "Seefeld", desc: "calm, premium, close to the lake" },
+  { name: "Oerlikon", desc: "business-friendly, well connected" },
+  { name: "District 4", desc: "central, sometimes livelier" },
+];
+
+const coworking = [
+  { name: "Impact Hub Zurich", desc: "Coworking + community", url: "https://zurich.impacthub.ch/en/" },
+  { name: "Kraftwerk Zurich", desc: "Coworking/meetings + community vibe", url: "https://kraftwerkzuerich.ch/" },
+  { name: "Tip", desc: "If it’s pricey: compare day pass vs. packages", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "often calmer — still test peak hours" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/zuerich"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

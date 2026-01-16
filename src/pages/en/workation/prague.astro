@@ -1,0 +1,80 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+const city = "Prague";
+const title = `Workation in ${city}: charming, affordable & focus-friendly`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "historic, relaxed, great value for money";
+
+const cards = [
+  { label: "Timezone", value: "CET/CEST" },
+  { label: "WiFi", value: "8/10" },
+  { label: "Noise", value: "5/10" },
+  { label: "Costs", value: "8/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "8/10" },
+  { label: "Noise", value: "5/10", note: "(old town is touristy; elsewhere calmer)" },
+  { label: "Coworking density", value: "7/10" },
+  { label: "Café friendliness", value: "7/10" },
+  { label: "Night safety", value: "8/10" },
+  { label: "Costs", value: "8/10" },
+];
+
+const areas = [
+  { name: "Vinohrady", desc: "calmer, local vibe, many cafés" },
+  { name: "Karlín", desc: "modern, creative, good work spots" },
+  { name: "Smíchov", desc: "practical, well connected" },
+];
+
+const coworking = [
+  {
+    name: "Opero (Coworking)",
+    desc: "Stylish, professional vibe — great for deep work days",
+    url: "https://opero.cz/en/",
+  },
+  {
+    name: "Impact Hub Prague",
+    desc: "Big community + events — solid networking and coworking atmosphere",
+    url: "https://www.impacthub.cz/",
+  },
+  {
+    name: "Scott.Weber Workspace",
+    desc: "Business-grade setup, meeting rooms, multiple locations — very reliable",
+    url: "https://scottweber.cz/en/",
+  },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "test weekdays in the morning" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/prag"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

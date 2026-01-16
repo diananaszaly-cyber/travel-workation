@@ -1,0 +1,18 @@
+---
+import BaseDE from "../../layouts/BaseDE.astro";
+import { BRAND_DE } from "../../lib/site";
+
+const brand = BRAND_DE;
+const title = `Reiseideen | ${brand}`;
+---
+<BaseDE title={title}>
+  <h1>Reiseideen</h1>
+  <p>Wochenendtrips, Roadtrips, Klassiker, Budget- und Familienreisen.</p>
+
+  <h2>Coming soon</h2>
+  <ul>
+    <li>Städte & Regionen (Draft)</li>
+    <li>PDF-Downloads: 3/5/7-Tage Pläne</li>
+    <li>Packlisten & Checklisten</li>
+  </ul>
+</BaseDE>

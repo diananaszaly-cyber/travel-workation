@@ -1,0 +1,35 @@
+---
+import { BRAND_EN } from "../lib/site";
+const brand = BRAND_EN;
+
+const { title = brand } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+
+  <body style="font-family: system-ui; max-width: 900px; margin: 24px auto; padding: 0 16px;">
+    <header style="display:flex; gap:12px; align-items:center; justify-content:space-between; padding: 12px 0; border-bottom:1px solid #eee;">
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <a href="/en" style="text-decoration:none; font-weight:700;">{brand}</a>
+        <nav style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="/en/workation">Workation</a>
+          <a href="/en/travel-ideas">Travel ideas</a>
+        </nav>
+      </div>
+      <a href="/de" title="Deutsch">DE</a>
+    </header>
+
+    <main style="padding: 18px 0;">
+      <slot />
+    </main>
+
+    <footer style="padding: 18px 0; border-top:1px solid #eee; font-size: 14px;">
+      <a href="/en">Home</a> · <a href="/en/workation">Workation</a> · <a href="/en/travel-ideas">Travel ideas</a>
+    </footer>
+  </body>
+</html>
+

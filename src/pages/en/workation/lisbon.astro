@@ -1,0 +1,69 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+
+const city = "Lisbon";
+const title = `Workation in ${city}: stay productive & enjoy life`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "creative + international";
+
+const cards = [
+  { label: "Timezone", value: "WET/WEST" },
+  { label: "WiFi", value: "8/10" },
+  { label: "Noise", value: "6/10" },
+  { label: "Costs", value: "7/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "8/10" },
+  { label: "Noise", value: "6/10", note: "(depends on area/evenings)" },
+  { label: "Coworking density", value: "9/10" },
+  { label: "Café friendliness", value: "8/10" },
+  { label: "Night safety", value: "7/10" },
+  { label: "Costs", value: "7/10" },
+];
+
+const areas = [
+  { name: "Príncipe Real", desc: "calmer, stylish, great cafés" },
+  { name: "Cais do Sodré", desc: "very central (livelier at night)" },
+  { name: "Parque das Nações", desc: "modern & quieter, good for calls" },
+];
+
+const coworking = [
+  { name: "Second Home Lisboa", desc: "Flexible coworking, day passes", url: "https://secondhome.io/coworking-space-lisbon/" },
+  { name: "Unicorn Workspaces", desc: "Multiple locations in Lisbon", url: "https://www.unicornportugal.pt/locations" },
+  { name: "Tip", desc: "Try a day pass first, then choose a plan", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "test weekdays in the morning" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/lissabon"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

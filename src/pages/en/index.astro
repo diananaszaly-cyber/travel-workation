@@ -1,0 +1,32 @@
+---
+import BaseEN from "../../layouts/BaseEN.astro";
+import { BRAND_EN } from "../../lib/site";
+
+const brand = BRAND_EN;
+const title = `${brand} – Travel & Workation`;
+---
+<BaseEN title={title}>
+  <h1>{brand}</h1>
+  <p>Two paths: classic travel ideas or work-friendly trips:</p>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin: 14px 0;">
+    <a href="/en/workation" style="display:inline-block; border:1px solid #ddd; padding:10px 12px; border-radius:10px; text-decoration:none;">
+      <strong>Workation & Workspaces</strong><br />
+      <small>Cities, coworking, quiet spots, internet backup</small>
+    </a>
+
+    <a href="/en/travel-ideas" style="display:inline-block; border:1px solid #ddd; padding:10px 12px; border-radius:10px; text-decoration:none;">
+      <strong>Travel ideas</strong><br />
+      <small>Weekend trips, road trips, classics</small>
+    </a>
+  </div>
+
+  <h2>What’s next?</h2>
+  <ul>
+    <li>More cities (DACH + EU)</li>
+    <li>PDF downloads: 7-day plans, packing lists, checklists</li>
+    <li>Later: deals & partner links</li>
+  </ul>
+</BaseEN>
+
+

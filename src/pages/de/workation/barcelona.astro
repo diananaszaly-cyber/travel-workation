@@ -1,0 +1,69 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "de";
+
+const city = "Barcelona";
+const title = `Workation in ${city}: Sonne, Stadtleben & produktive Tage`;
+
+const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
+const vibe = "lebendig, kreativ, international";
+
+const cards = [
+  { label: "Zeitzone", value: "CET/CEST" },
+  { label: "WLAN", value: "8/10" },
+  { label: "Lautstärke", value: "7/10" },
+  { label: "Kosten", value: "6/10" },
+];
+
+const workability = [
+  { label: "WLAN-Zuverlässigkeit", value: "8/10" },
+  { label: "Lautstärke", value: "7/10", note: "(touristisch/zentral oft lauter)" },
+  { label: "Coworking-Dichte", value: "8/10" },
+  { label: "Café-Work-Freundlichkeit", value: "7/10" },
+  { label: "Sicherheit (nachts)", value: "6/10", note: "(Taschendiebstahl: aufmerksam sein)" },
+  { label: "Kosten", value: "6/10" },
+];
+
+const areas = [
+  { name: "Eixample", desc: "zentral, viele Spots, gute Anbindung" },
+  { name: "Gràcia", desc: "kreativ, gemütlich, eher lokal" },
+  { name: "Poblenou", desc: "tech/creative vibe, Coworkings, näher am Meer" },
+];
+
+const coworking = [
+  { name: "Aticco (Barcelona)", desc: "Coworking + Community (mehrere Locations)", url: "https://aticco.com/en/" },
+  { name: "OneCoWork (Barcelona)", desc: "Coworking-Locations in der Stadt", url: "https://www.onecowork.com/" },
+  { name: "Tipp", desc: "Day-Pass testen, dann Paket wählen", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags am ruhigsten" },
+  { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+];
+
+const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/de/workation"
+  otherLangHref="/en/workation/barcelona"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

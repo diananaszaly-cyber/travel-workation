@@ -1,0 +1,317 @@
+---
+import BaseDE from "../layouts/BaseDE.astro";
+import BaseEN from "../layouts/BaseEN.astro";
+import { getCoworkingFromPathname } from "../lib/coworking";
+
+type Card = { label: string; value: string };
+type Workability = { label: string; value: string; note?: string };
+type Area = { name: string; desc: string };
+type Coworking = { name: string; desc: string; url?: string };
+type Mini = { head: string; desc: string };
+
+const {
+  lang,
+  title,
+  city,
+  backHref,
+  otherLangHref,
+  idealFor,
+  vibe,
+  cards,
+  workability,
+  areas,
+  coworking,
+  cafesQuiet,
+  backup,
+  note,
+} = Astro.props as {
+  lang: "de" | "en";
+  title: string;
+  city: string;
+  backHref: string;
+  otherLangHref: string;
+  idealFor: string;
+  vibe: string;
+  cards: Card[];
+  workability: Workability[];
+  areas: Area[];
+  coworking: Coworking[];
+  cafesQuiet: Mini[];
+  backup: Mini[];
+  note: string;
+};
+
+// ✅ Zentrale Coworking-Liste per URL (wenn vorhanden, überschreibt sie die City-Datei)
+const coworkingFromLib = getCoworkingFromPathname(Astro.url.pathname, lang);
+const coworkingList = (coworkingFromLib && coworkingFromLib.length > 0) ? coworkingFromLib : coworking;
+
+const L = (lang === "de")
+  ? {
+      back: "← Zurück zu Workation",
+      idealFor: "Ideal für:",
+      vibe: "Vibe:",
+      legend:
+        "Score-Legende: WLAN/Coworking/Café/Sicherheit: 0 = schlecht, 10 = sehr gut · Lautstärke: 0 = leise, 10 = laut · Kosten: 0 = teuer, 10 = günstig",
+      hWorkability: "Workability Score (0–10)",
+      hAreas: "Beste Viertel zum Arbeiten",
+      hCoworking: "Coworking Shortlist",
+      hCafes: "Cafés & Quiet Spots",
+      hBackup: "Internet & Backup-Plan",
+      hNote: "Hinweis",
+      img: `Bild: ${city} (Placeholder)`,
+      pdf: `7-Tage Workation Plan: ${city} (PDF) herunterladen`,
+      pdfLater: "(später)",
+      pdfBtn: "Jetzt Downloaden",
+      otherLang: "English version",
+    }
+  : {
+      back: "← Back to Workation",
+      idealFor: "Ideal for:",
+      vibe: "Vibe:",
+      legend:
+        "Score legend: WiFi/Coworking/Cafés/Safety: 0 = poor, 10 = excellent · Noise: 0 = quiet, 10 = loud · Costs: 0 = expensive, 10 = affordable",
+      hWorkability: "Workability Score (0–10)",
+      hAreas: "Best neighborhoods for remote work",
+      hCoworking: "Coworking shortlist",
+      hCafes: "Cafés & quiet spots",
+      hBackup: "Internet & backup plan",
+      hNote: "Note",
+      img: `Image: ${city} (Placeholder)`,
+      pdf: `7-day Workation Plan: ${city} (PDF) download`,
+      pdfLater: "(later)",
+      pdfBtn: "Download",
+      otherLang: "German version",
+    };
+---
+
+{lang === "de" ? (
+  <BaseDE title={title}>
+    <a href={backHref} style="display:inline-block; margin: 6px 0 18px; text-decoration:none;">
+      {L.back}
+    </a>
+
+    <h1 style="margin: 0 0 8px;">{title}</h1>
+    <p style="margin: 0 0 16px; color:#333;">
+      {L.idealFor}&nbsp;{idealFor} · <em>{L.vibe}&nbsp;{vibe}</em>
+    </p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:10px; margin: 10px 0 10px;">
+      {cards.map((c) => (
+        <span style="border:1px solid #ddd; padding:8px 10px; border-radius:10px; background:#fafafa;">
+          {c.label}:&nbsp;<strong>{c.value}</strong>
+        </span>
+      ))}
+    </div>
+
+    <p style="margin: 6px 0 18px; font-size: 13px;">
+      <strong>{L.legend}</strong>
+    </p>
+
+    <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items:start;">
+      <div>
+        <h2 style="margin-top:0;">{L.hWorkability}</h2>
+        <ul style="margin-top: 10px;">
+          {workability.map((w) => (
+            <li style="margin: 6px 0;">
+              <strong>{w.label}:</strong>&nbsp;{w.value} {w.note ? <small>{w.note}</small> : null}
+            </li>
+          ))}
+        </ul>
+
+        <hr style="margin: 18px 0;" />
+
+        <h2>{L.hAreas}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
+          {areas.map((a) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>› {a.name}</strong> – {a.desc}
+            </li>
+          ))}
+        </ul>
+
+        <hr style="margin: 18px 0;" />
+
+        <h2>{L.hCoworking}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
+          {coworkingList.map((c) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>
+                › {c.url ? <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a> : c.name}
+              </strong>{" "}
+              – {c.desc}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <div
+          style="
+            border-radius:16px;
+            border:1px solid #eee;
+            min-height: 210px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: linear-gradient(135deg, #eef7ff, #f6ecff);
+            color:#555;
+            font-weight:600;
+            margin-top: 56px;
+          "
+        >
+          {L.img}
+        </div>
+
+        <h2 style="margin: 18px 0 10px;">{L.hCafes}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 0;">
+          {cafesQuiet.map((x) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>› {x.head}:</strong>&nbsp;{x.desc}
+            </li>
+          ))}
+        </ul>
+
+        <h2 style="margin: 18px 0 10px;">{L.hBackup}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 0;">
+          {backup.map((b) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>› {b.head}:</strong>&nbsp;{b.desc}
+            </li>
+          ))}
+        </ul>
+
+        <h2 style="margin: 18px 0 10px;">{L.hNote}</h2>
+        <p style="margin: 0; color:#333;">{note}</p>
+      </div>
+    </div>
+
+    <div style="margin: 24px 0; padding: 18px; border: 1px solid #eee; border-radius: 14px; background:#fafafa;">
+      <strong>{L.pdf}</strong> <span style="color:#666;">{L.pdfLater}</span>
+      <div style="margin-top: 12px;">
+        <button disabled style="padding:10px 16px; border-radius:10px; border:1px solid #ddd; background:#f1f1f1; cursor:not-allowed; font-weight:700;">
+          {L.pdfBtn}
+        </button>
+      </div>
+    </div>
+
+    <hr style="margin: 20px 0;" />
+    <p style="margin: 0;">
+      <a href={otherLangHref}>{L.otherLang}</a>
+    </p>
+  </BaseDE>
+) : (
+  <BaseEN title={title}>
+    <a href={backHref} style="display:inline-block; margin: 6px 0 18px; text-decoration:none;">
+      {L.back}
+    </a>
+
+    <h1 style="margin: 0 0 8px;">{title}</h1>
+    <p style="margin: 0 0 16px; color:#333;">
+      {L.idealFor}&nbsp;{idealFor} · <em>{L.vibe}&nbsp;{vibe}</em>
+    </p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:10px; margin: 10px 0 10px;">
+      {cards.map((c) => (
+        <span style="border:1px solid #ddd; padding:8px 10px; border-radius:10px; background:#fafafa;">
+          {c.label}:&nbsp;<strong>{c.value}</strong>
+        </span>
+      ))}
+    </div>
+
+    <p style="margin: 6px 0 18px; font-size: 13px;">
+      <strong>{L.legend}</strong>
+    </p>
+
+    <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items:start;">
+      <div>
+        <h2 style="margin-top:0;">{L.hWorkability}</h2>
+        <ul style="margin-top: 10px;">
+          {workability.map((w) => (
+            <li style="margin: 6px 0;">
+              <strong>{w.label}:</strong>&nbsp;{w.value} {w.note ? <small>{w.note}</small> : null}
+            </li>
+          ))}
+        </ul>
+
+        <hr style="margin: 18px 0;" />
+
+        <h2>{L.hAreas}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
+          {areas.map((a) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>› {a.name}</strong> – {a.desc}
+            </li>
+          ))}
+        </ul>
+
+        <hr style="margin: 18px 0;" />
+
+        <h2>{L.hCoworking}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
+          {coworkingList.map((c) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>
+                › {c.url ? <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a> : c.name}
+              </strong>{" "}
+              – {c.desc}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <div
+          style="
+            border-radius:16px;
+            border:1px solid #eee;
+            min-height: 210px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: linear-gradient(135deg, #eef7ff, #f6ecff);
+            color:#555;
+            font-weight:600;
+            margin-top: 56px;
+          "
+        >
+          {L.img}
+        </div>
+
+        <h2 style="margin: 18px 0 10px;">{L.hCafes}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 0;">
+          {cafesQuiet.map((x) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>› {x.head}:</strong>&nbsp;{x.desc}
+            </li>
+          ))}
+        </ul>
+
+        <h2 style="margin: 18px 0 10px;">{L.hBackup}</h2>
+        <ul style="list-style: none; padding-left: 0; margin: 0;">
+          {backup.map((b) => (
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <strong>› {b.head}:</strong>&nbsp;{b.desc}
+            </li>
+          ))}
+        </ul>
+
+        <h2 style="margin: 18px 0 10px;">{L.hNote}</h2>
+        <p style="margin: 0; color:#333;">{note}</p>
+      </div>
+    </div>
+
+    <div style="margin: 24px 0; padding: 18px; border: 1px solid #eee; border-radius: 14px; background:#fafafa;">
+      <strong>{L.pdf}</strong> <span style="color:#666;">{L.pdfLater}</span>
+      <div style="margin-top: 12px;">
+        <button disabled style="padding:10px 16px; border-radius:10px; border:1px solid #ddd; background:#f1f1f1; cursor:not-allowed; font-weight:700;">
+          {L.pdfBtn}
+        </button>
+      </div>
+    </div>
+
+    <hr style="margin: 20px 0;" />
+    <p style="margin: 0;">
+      <a href={otherLangHref}>{L.otherLang}</a>
+    </p>
+  </BaseEN>
+)}

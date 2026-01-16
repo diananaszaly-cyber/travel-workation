@@ -1,0 +1,36 @@
+---
+import BaseEN from "../../layouts/BaseEN.astro";
+import { BRAND_EN } from "../../lib/site";
+
+const brand = BRAND_EN;
+const title = `Workation & Workspaces | ${brand}`;
+---
+<BaseEN title={title}>
+  <a href="/en">← Home</a>
+
+  <h1>Workation & Workspaces</h1>
+  <p>Cities, coworkings, quiet spots, internet backup & timezone fit.</p>
+
+  <h2>Cities (draft)</h2>
+  <ul>
+    <li><a href="/en/workation/lisbon">Lisbon</a></li>
+    <li><a href="/en/workation/zurich">Zurich</a></li>
+    <li><a href="/en/workation/vienna">Vienna</a></li>
+    <li><a href="/en/workation/barcelona">Barcelona</a></li>
+    <li><a href="/en/workation/amsterdam">Amsterdam</a></li>
+    <li><a href="/en/workation/prague">Prague</a></li>
+    <li><a href="/en/workation/berlin">Berlin</a></li>
+    <li><a href="/en/workation/budapest">Budapest</a></li>
+    <li><a href="/en/workation/paris">Paris</a></li>
+    <li><a href="/en/workation/rome">Rome</a></li>
+    <li><a href="/en/workation/malaga">Málaga</a></li>
+  </ul>
+
+  <p style="margin-top:18px;">
+    <small><strong>Score legend (on city pages):</strong>
+      WiFi/Coworking/Cafés/Safety: 0 = poor, 10 = excellent ·
+      <strong>Noise:</strong> 0 = quiet, 10 = loud ·
+      <strong>Costs:</strong> 0 = expensive, 10 = affordable
+    </small>
+  </p>
+</BaseEN>

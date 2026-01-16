@@ -1,0 +1,30 @@
+---
+import BaseDE from "../../layouts/BaseDE.astro";
+import { BRAND_DE } from "../../lib/site";
+
+const brand = BRAND_DE;
+const title = `${brand} – Reisen & Workation`;
+---
+<BaseDE title={title}>
+  <h1>{brand}</h1>
+  <p>2 Einstiege – klassisch reisen oder produktiv arbeiten unterwegs:</p>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin: 14px 0;">
+    <a href="/de/workation" style="display:inline-block; border:1px solid #ddd; padding:10px 12px; border-radius:10px; text-decoration:none;">
+      <strong>Workation & Workspaces</strong><br />
+      <small>Städte, Coworking, ruhige Spots, Internet-Backup</small>
+    </a>
+
+    <a href="/de/reiseideen" style="display:inline-block; border:1px solid #ddd; padding:10px 12px; border-radius:10px; text-decoration:none;">
+      <strong>Reiseideen</strong><br />
+      <small>Wochenendtrips, Roadtrips, Klassiker</small>
+    </a>
+  </div>
+
+  <h2>Was kommt als nächstes?</h2>
+  <ul>
+    <li>Mehr Städte (DACH + EU)</li>
+    <li>Downloads (PDF): 7-Tage Pläne, Packlisten, Checklisten</li>
+    <li>Später: Deals & Partnerlinks</li>
+  </ul>
+</BaseDE>

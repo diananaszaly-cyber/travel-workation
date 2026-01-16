@@ -1,0 +1,69 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+
+const city = "Vienna";
+const title = `Workation in ${city}: work calmly & enjoy culture`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "cultural, cozy, well organized";
+
+const cards = [
+  { label: "Timezone", value: "CET/CEST" },
+  { label: "WiFi", value: "8/10" },
+  { label: "Noise", value: "5/10" },
+  { label: "Costs", value: "6/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "8/10" },
+  { label: "Noise", value: "5/10", note: "(center is livelier, outer districts are calmer)" },
+  { label: "Coworking density", value: "7/10" },
+  { label: "Café friendliness", value: "7/10" },
+  { label: "Night safety", value: "8/10" },
+  { label: "Costs", value: "6/10" },
+];
+
+const areas = [
+  { name: "Neubau (7th)", desc: "creative, many cafés, well connected" },
+  { name: "Leopoldstadt (2nd)", desc: "close to the center, more space, good spots" },
+  { name: "Mariahilf (6th)", desc: "central, convenient, lively" },
+];
+
+const coworking = [
+  { name: "Impact Hub Vienna", desc: "Coworking + community", url: "https://vienna.impacthub.net/" },
+  { name: "Talent Garden Vienna", desc: "Coworking + events", url: "https://talentgarden.org/en/coworking/vienna/" },
+  { name: "Tip", desc: "Try a day pass first, then choose a plan", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "best tested on weekdays in the morning" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/wien"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

@@ -1,0 +1,68 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+const city = "Rome";
+const title = `Workation in ${city}: history, food & focus (with a plan)`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "iconic, lively, sometimes chaotic";
+
+const cards = [
+  { label: "Timezone", value: "CET/CEST" },
+  { label: "WiFi", value: "7/10" },
+  { label: "Noise", value: "7/10" },
+  { label: "Costs", value: "5/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "7/10", note: "(accommodation matters a lot)" },
+  { label: "Noise", value: "7/10" },
+  { label: "Coworking density", value: "7/10" },
+  { label: "Café friendliness", value: "6/10" },
+  { label: "Night safety", value: "7/10" },
+  { label: "Costs", value: "5/10" },
+];
+
+const areas = [
+  { name: "Prati", desc: "practical, well connected, generally calmer" },
+  { name: "Testaccio", desc: "local vibe, great food, more relaxed" },
+  { name: "Monti", desc: "central, pretty, often livelier" },
+];
+
+const coworking = [
+  { name: "Coworking (TBD)", desc: "we’ll add 2–3 real spots next", url: "" },
+  { name: "Coworking (TBD)", desc: "research + links together", url: "" },
+  { name: "Tip", desc: "For focus: coworking + calm accommodation", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "test weekdays in the morning" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/rom"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

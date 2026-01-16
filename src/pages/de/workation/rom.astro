@@ -1,0 +1,68 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "de";
+const city = "Rom";
+const title = `Workation in ${city}: Geschichte, Essen & Fokus mit Plan`;
+
+const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
+const vibe = "ikonisch, lebendig, manchmal chaotisch";
+
+const cards = [
+  { label: "Zeitzone", value: "CET/CEST" },
+  { label: "WLAN", value: "7/10" },
+  { label: "Lautstärke", value: "7/10" },
+  { label: "Kosten", value: "5/10" },
+];
+
+const workability = [
+  { label: "WLAN-Zuverlässigkeit", value: "7/10", note: "(Unterkunft stark entscheidend)" },
+  { label: "Lautstärke", value: "7/10" },
+  { label: "Coworking-Dichte", value: "7/10" },
+  { label: "Café-Work-Freundlichkeit", value: "6/10" },
+  { label: "Sicherheit (nachts)", value: "7/10" },
+  { label: "Kosten", value: "5/10" },
+];
+
+const areas = [
+  { name: "Prati", desc: "praktisch, gut angebunden, eher ruhig" },
+  { name: "Testaccio", desc: "lokal, gutes Essen, entspannter" },
+  { name: "Monti", desc: "zentral, schön, oft lebhafter" },
+];
+
+const coworking = [
+  { name: "Coworking (TBD)", desc: "2–3 echte Spots ergänzen wir als Nächstes", url: "" },
+  { name: "Coworking (TBD)", desc: "Recherche + Links gemeinsam", url: "" },
+  { name: "Tipp", desc: "Fokus: Coworking + ruhige Unterkunft kombinieren", url: "" },
+];
+
+const cafesQuiet = [
+  { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags testen" },
+  { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+];
+
+const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/de/workation"
+  otherLangHref="/en/workation/rome"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

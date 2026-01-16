@@ -1,0 +1,80 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "de";
+const city = "Budapest";
+const title = `Workation in ${city}: viel Stadt für kleines Budget`;
+
+const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
+const vibe = "spannend, preiswert, lebendig";
+
+const cards = [
+  { label: "Zeitzone", value: "CET/CEST" },
+  { label: "WLAN", value: "8/10" },
+  { label: "Lautstärke", value: "6/10" },
+  { label: "Kosten", value: "8/10" },
+];
+
+const workability = [
+  { label: "WLAN-Zuverlässigkeit", value: "8/10" },
+  { label: "Lautstärke", value: "6/10", note: "(Zentrum lebhafter, Buda ruhiger)" },
+  { label: "Coworking-Dichte", value: "7/10" },
+  { label: "Café-Work-Freundlichkeit", value: "7/10" },
+  { label: "Sicherheit (nachts)", value: "7/10" },
+  { label: "Kosten", value: "8/10" },
+];
+
+const areas = [
+  { name: "District V (Belváros)", desc: "zentral, praktisch, touristischer" },
+  { name: "Újbuda (XI)", desc: "ruhiger, gut für längere stays" },
+  { name: "Buda Side", desc: "entspannter, mehr Ruhe" },
+];
+
+const coworking = [
+  {
+    name: "Kaptar Coworking (Budapest)",
+    desc: "Etabliertes Coworking mit Community & zentraler Lage",
+    url: "https://kaptarbudapest.hu/",
+  },
+  {
+    name: "Impact Hub Budapest",
+    desc: "Coworking + Events/Community (gut zum Netzwerken)",
+    url: "https://budapest.impacthub.net/",
+  },
+  {
+    name: "Flow Spaces",
+    desc: "Sehr beliebtes Coworking mit Fokus auf Produktivität",
+    url: "https://flowspaces.com/",
+  },
+];
+
+const cafesQuiet = [
+  { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags testen" },
+  { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+];
+
+const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/de/workation"
+  otherLangHref="/en/workation/budapest"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

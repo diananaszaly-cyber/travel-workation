@@ -1,0 +1,81 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "en";
+
+const city = "Berlin";
+const title = `Workation in ${city}: creative, flexible & packed with work spots`;
+
+const idealFor = "solo remote workers, couples, small teams";
+const vibe = "creative, international, big-city energy";
+
+const cards = [
+  { label: "Timezone", value: "CET/CEST" },
+  { label: "WiFi", value: "8/10" },
+  { label: "Noise", value: "7/10" },
+  { label: "Costs", value: "6/10" },
+];
+
+const workability = [
+  { label: "WiFi reliability", value: "8/10" },
+  { label: "Noise", value: "7/10", note: "(depends on neighborhood; weekends louder)" },
+  { label: "Coworking density", value: "9/10" },
+  { label: "Café friendliness", value: "8/10" },
+  { label: "Night safety", value: "7/10", note: "(like any big city: stay aware)" },
+  { label: "Costs", value: "6/10" },
+];
+
+const areas = [
+  { name: "Prenzlauer Berg", desc: "residential, many cafés, great for routines" },
+  { name: "Mitte", desc: "central, many coworkings, convenient for meetings" },
+  { name: "Kreuzberg", desc: "creative & lively (can be louder at night)" },
+];
+
+const coworking = [
+  {
+    name: "Mindspace Berlin",
+    desc: "Premium coworking / flexible offices (multiple locations)",
+    url: "https://www.mindspace.me/berlin/",
+  },
+  {
+    name: "betahaus Berlin",
+    desc: "Community coworking (Kreuzberg) + day passes",
+    url: "https://www.betahaus.com/coworking",
+  },
+  {
+    name: "WeWork Berlin",
+    desc: "Flexible coworking spaces across the city",
+    url: "https://www.wework.com/l/coworking-space/berlin",
+  },
+];
+
+const cafesQuiet = [
+  { head: "Laptop-friendly cafés", desc: "weekdays in the morning are usually calmest" },
+  { head: "Quiet spots", desc: "libraries, hotel lobbies, coworking lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "test accommodation WiFi on day 1 (speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM hotspot backup" },
+  { head: "Plan C", desc: "coworking day pass as a deadline rescue" },
+];
+
+const note = "Note: recommendations may include partner links. No legal or tax advice.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/en/workation"
+  otherLangHref="/de/workation/berlin"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

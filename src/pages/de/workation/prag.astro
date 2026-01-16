@@ -1,0 +1,80 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "de";
+const city = "Prag";
+const title = `Workation in ${city}: charmant, günstig & fokusfreundlich`;
+
+const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
+const vibe = "historisch, entspannt, gutes Preis-Leistungs-Verhältnis";
+
+const cards = [
+  { label: "Zeitzone", value: "CET/CEST" },
+  { label: "WLAN", value: "8/10" },
+  { label: "Lautstärke", value: "5/10" },
+  { label: "Kosten", value: "8/10" },
+];
+
+const workability = [
+  { label: "WLAN-Zuverlässigkeit", value: "8/10" },
+  { label: "Lautstärke", value: "5/10", note: "(Altstadt touristischer; außerhalb ruhiger)" },
+  { label: "Coworking-Dichte", value: "7/10" },
+  { label: "Café-Work-Freundlichkeit", value: "7/10" },
+  { label: "Sicherheit (nachts)", value: "8/10" },
+  { label: "Kosten", value: "8/10" },
+];
+
+const areas = [
+  { name: "Vinohrady", desc: "ruhiger, lokal, viele Cafés" },
+  { name: "Karlín", desc: "modern, kreativ, gute Work-Spots" },
+  { name: "Smíchov", desc: "praktisch, gut angebunden" },
+];
+
+const coworking = [
+  {
+    name: "Opero (Coworking)",
+    desc: "Stylish & professionell, gute Atmosphäre für Fokus-Tage",
+    url: "https://opero.cz/en/",
+  },
+  {
+    name: "Impact Hub Praha",
+    desc: "Große Community, Events, mehrere Bereiche – gut zum Netzwerken",
+    url: "https://www.impacthub.cz/",
+  },
+  {
+    name: "Scott.Weber Workspace",
+    desc: "Business-Setup, Meetingräume, mehrere Standorte – sehr zuverlässig",
+    url: "https://scottweber.cz/en/",
+  },
+];
+
+const cafesQuiet = [
+  { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags testen" },
+  { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+];
+
+const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/de/workation"
+  otherLangHref="/en/workation/prague"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

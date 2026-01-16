@@ -1,0 +1,81 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "de";
+
+const city = "Berlin";
+const title = `Workation in ${city}: kreativ, flexibel & super viele Work-Spots`;
+
+const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
+const vibe = "kreativ, international, großstädtisch";
+
+const cards = [
+  { label: "Zeitzone", value: "CET/CEST" },
+  { label: "WLAN", value: "8/10" },
+  { label: "Lautstärke", value: "7/10" },
+  { label: "Kosten", value: "6/10" },
+];
+
+const workability = [
+  { label: "WLAN-Zuverlässigkeit", value: "8/10" },
+  { label: "Lautstärke", value: "7/10", note: "(je nach Kiez/Weekend deutlich lauter)" },
+  { label: "Coworking-Dichte", value: "9/10" },
+  { label: "Café-Work-Freundlichkeit", value: "8/10" },
+  { label: "Sicherheit (nachts)", value: "7/10", note: "(wie in jeder Großstadt: aufmerksam bleiben)" },
+  { label: "Kosten", value: "6/10" },
+];
+
+const areas = [
+  { name: "Prenzlauer Berg", desc: "wohnlich, viele Cafés, gut für Routine" },
+  { name: "Mitte", desc: "zentral, viele Coworkings, praktisch für Termine" },
+  { name: "Kreuzberg", desc: "kreativ & lebendig (abends teils lauter)" },
+];
+
+const coworking = [
+  {
+    name: "Mindspace Berlin",
+    desc: "Premium Coworking / flexible Offices (mehrere Locations)",
+    url: "https://www.mindspace.me/berlin/",
+  },
+  {
+    name: "betahaus Berlin",
+    desc: "Community Coworking (Kreuzberg) + Day Passes",
+    url: "https://www.betahaus.com/coworking",
+  },
+  {
+    name: "WeWork Berlin",
+    desc: "Flexible Coworking-Spaces in mehreren Bezirken",
+    url: "https://www.wework.com/l/coworking-space/berlin",
+  },
+];
+
+const cafesQuiet = [
+  { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags am ruhigsten" },
+  { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+];
+
+const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/de/workation"
+  otherLangHref="/en/workation/berlin"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>

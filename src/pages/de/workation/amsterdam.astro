@@ -1,0 +1,80 @@
+---
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const lang = "de";
+const city = "Amsterdam";
+const title = `Workation in ${city}: produktiv arbeiten & entspannt kanäle genießen`;
+
+const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
+const vibe = "international, kreativ, urban";
+
+const cards = [
+  { label: "Zeitzone", value: "CET/CEST" },
+  { label: "WLAN", value: "9/10" },
+  { label: "Lautstärke", value: "6/10" },
+  { label: "Kosten", value: "4/10" },
+];
+
+const workability = [
+  { label: "WLAN-Zuverlässigkeit", value: "9/10" },
+  { label: "Lautstärke", value: "6/10", note: "(zentral lebhafter, außerhalb ruhiger)" },
+  { label: "Coworking-Dichte", value: "8/10" },
+  { label: "Café-Work-Freundlichkeit", value: "7/10" },
+  { label: "Sicherheit (nachts)", value: "8/10" },
+  { label: "Kosten", value: "4/10" },
+];
+
+const areas = [
+  { name: "De Pijp", desc: "lebendig, viele Cafés, gut angebunden" },
+  { name: "Amsterdam Oost", desc: "etwas ruhiger, viel Auswahl, lokal" },
+  { name: "Zuidas", desc: "business-nah, ruhig für Calls" },
+];
+
+const coworking = [
+  {
+    name: "B. Amsterdam (Coworking Floor)",
+    desc: "Großer Creative Campus mit flexiblem Coworking",
+    url: "https://b-amsterdam.com/en/werkplekken/cowork-floor/",
+  },
+  {
+    name: "TNW City",
+    desc: "Tech-Coworking-Hub am Kanal (The Next Web)",
+    url: "https://thenextweb.com/spaces/locations/city",
+  },
+  {
+    name: "WeWork Amsterdam",
+    desc: "Mehrere Locations, flexibel buchbar",
+    url: "https://www.wework.com/l/coworking-space/amsterdam",
+  },
+];
+
+const cafesQuiet = [
+  { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags testen" },
+  { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
+];
+
+const backup = [
+  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+];
+
+const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+---
+
+<WorkationCityPage
+  lang={lang}
+  title={title}
+  city={city}
+  backHref="/de/workation"
+  otherLangHref="/en/workation/amsterdam"
+  idealFor={idealFor}
+  vibe={vibe}
+  cards={cards}
+  workability={workability}
+  areas={areas}
+  coworking={coworking}
+  cafesQuiet={cafesQuiet}
+  backup={backup}
+  note={note}
+/>
