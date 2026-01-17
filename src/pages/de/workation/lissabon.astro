@@ -1,69 +1,24 @@
 ---
-import WorkationCityPage from "../../../components/WorkationCityPage.astro";
-
-const lang = "de";
-
-const city = "Lissabon";
-const title = `Workation in ${city}: produktiv arbeiten & gut leben`;
-
-const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
-const vibe = "kreativ + international";
-
-const cards = [
-  { label: "Zeitzone", value: "WET/WEST" },
-  { label: "WLAN", value: "8/10" },
-  { label: "Lautstärke", value: "6/10" },
-  { label: "Kosten", value: "7/10" },
-];
-
-const workability = [
-  { label: "WLAN-Zuverlässigkeit", value: "8/10" },
-  { label: "Lautstärke", value: "6/10", note: "(je nach Viertel/abends)" },
-  { label: "Coworking-Dichte", value: "9/10" },
-  { label: "Café-Work-Freundlichkeit", value: "8/10" },
-  { label: "Sicherheit (nachts)", value: "7/10" },
-  { label: "Kosten", value: "7/10" },
-];
-
-const areas = [
-  { name: "Príncipe Real", desc: "ruhiger, schick, viele Cafés" },
-  { name: "Cais do Sodré", desc: "sehr zentral (abends lebhafter)" },
-  { name: "Parque das Nações", desc: "modern & eher ruhig, gut für Calls" },
-];
-
-const coworking = [
-  { name: "Second Home Lisboa", desc: "Flexibles Coworking, Day Passes", url: "https://secondhome.io/coworking-space-lisbon/" },
-  { name: "Unicorn Workspaces", desc: "Mehrere Locations in Lissabon", url: "https://www.unicornportugal.pt/locations" },
-  { name: "Tipp", desc: "Erst Day-Pass testen, dann Paket wählen", url: "" },
-];
-
-const cafesQuiet = [
-  { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags testen" },
-  { head: "Ruhige Orte", desc: "Bibliothek, Hotel-Lobby, Coworking-Lounges" },
-];
-
-const backup = [
-  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
-  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
-  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
-];
-
-const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+const target = "/de/workation/lissabon";
 ---
 
-<WorkationCityPage
-  lang={lang}
-  title={title}
-  city={city}
-  backHref="/de/workation"
-  otherLangHref="/en/workation/lisbon"
-  idealFor={idealFor}
-  vibe={vibe}
-  cards={cards}
-  workability={workability}
-  areas={areas}
-  coworking={coworking}
-  cafesQuiet={cafesQuiet}
-  backup={backup}
-  note={note}
-/>
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+    <title>Weiterleitung…</title>
+  </head>
+
+  <body style="font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding: 24px;">
+    <p>
+      Weiterleitung zu <a href={target}>{target}</a>…
+    </p>
+    <script>
+      window.location.replace("{target}");
+    </script>
+  </body>
+</html>
