@@ -1,7 +1,6 @@
 ---
 import BaseDE from "../layouts/BaseDE.astro";
 import BaseEN from "../layouts/BaseEN.astro";
-import { getCoworkingFromPathname } from "../lib/coworking";
 
 type Card = { label: string; value: string };
 type Workability = { label: string; value: string; note?: string };
@@ -10,7 +9,7 @@ type Coworking = { name: string; desc: string; url?: string };
 type Mini = { head: string; desc: string };
 
 const {
-  lang,
+  lang, // "de" | "en"
   title,
   city,
   backHref,
@@ -41,47 +40,44 @@ const {
   note: string;
 };
 
-// ✅ Zentrale Coworking-Liste per URL (wenn vorhanden, überschreibt sie die City-Datei)
-const coworkingFromLib = getCoworkingFromPathname(Astro.url.pathname, lang);
-const coworkingList = (coworkingFromLib && coworkingFromLib.length > 0) ? coworkingFromLib : coworking;
-
-const L = (lang === "de")
-  ? {
-      back: "← Zurück zu Workation",
-      idealFor: "Ideal für:",
-      vibe: "Vibe:",
-      legend:
-        "Score-Legende: WLAN/Coworking/Café/Sicherheit: 0 = schlecht, 10 = sehr gut · Lautstärke: 0 = leise, 10 = laut · Kosten: 0 = teuer, 10 = günstig",
-      hWorkability: "Workability Score (0–10)",
-      hAreas: "Beste Viertel zum Arbeiten",
-      hCoworking: "Coworking Shortlist",
-      hCafes: "Cafés & Quiet Spots",
-      hBackup: "Internet & Backup-Plan",
-      hNote: "Hinweis",
-      img: `Bild: ${city} (Placeholder)`,
-      pdf: `7-Tage Workation Plan: ${city} (PDF) herunterladen`,
-      pdfLater: "(später)",
-      pdfBtn: "Jetzt Downloaden",
-      otherLang: "English version",
-    }
-  : {
-      back: "← Back to Workation",
-      idealFor: "Ideal for:",
-      vibe: "Vibe:",
-      legend:
-        "Score legend: WiFi/Coworking/Cafés/Safety: 0 = poor, 10 = excellent · Noise: 0 = quiet, 10 = loud · Costs: 0 = expensive, 10 = affordable",
-      hWorkability: "Workability Score (0–10)",
-      hAreas: "Best neighborhoods for remote work",
-      hCoworking: "Coworking shortlist",
-      hCafes: "Cafés & quiet spots",
-      hBackup: "Internet & backup plan",
-      hNote: "Note",
-      img: `Image: ${city} (Placeholder)`,
-      pdf: `7-day Workation Plan: ${city} (PDF) download`,
-      pdfLater: "(later)",
-      pdfBtn: "Download",
-      otherLang: "German version",
-    };
+const L =
+  lang === "de"
+    ? {
+        back: "← Zurück zu Workation",
+        idealFor: "Ideal für:",
+        vibe: "Vibe:",
+        legend:
+          "Score-Legende: WLAN/Coworking/Café/Sicherheit: 0 = schlecht, 10 = sehr gut · Lautstärke: 0 = leise, 10 = laut · Kosten: 0 = teuer, 10 = günstig",
+        hWorkability: "Workability Score (0–10)",
+        hAreas: "Beste Viertel zum Arbeiten",
+        hCoworking: "Coworking Shortlist",
+        hCafes: "Cafés & Quiet Spots",
+        hBackup: "Internet & Backup-Plan",
+        hNote: "Hinweis",
+        img: `Bild: ${city} (Placeholder)`,
+        pdf: `7-Tage Workation Plan: ${city} (PDF) herunterladen`,
+        pdfLater: "(später)",
+        pdfBtn: "Jetzt Downloaden",
+        otherLang: "English version",
+      }
+    : {
+        back: "← Back to Workation",
+        idealFor: "Ideal for:",
+        vibe: "Vibe:",
+        legend:
+          "Score legend: WiFi/Coworking/Cafés/Safety: 0 = poor, 10 = excellent · Noise: 0 = quiet, 10 = loud · Costs: 0 = expensive, 10 = affordable",
+        hWorkability: "Workability Score (0–10)",
+        hAreas: "Best neighborhoods for remote work",
+        hCoworking: "Coworking shortlist",
+        hCafes: "Cafés & quiet spots",
+        hBackup: "Internet & backup plan",
+        hNote: "Note",
+        img: `Image: ${city} (Placeholder)`,
+        pdf: `7-day Workation Plan: ${city} (PDF) download`,
+        pdfLater: "(later)",
+        pdfBtn: "Download",
+        otherLang: "German version",
+      };
 ---
 
 {lang === "de" ? (
@@ -92,13 +88,13 @@ const L = (lang === "de")
 
     <h1 style="margin: 0 0 8px;">{title}</h1>
     <p style="margin: 0 0 16px; color:#333;">
-      {L.idealFor}&nbsp;{idealFor} · <em>{L.vibe}&nbsp;{vibe}</em>
+      {L.idealFor} {idealFor} · <em>{L.vibe} {vibe}</em>
     </p>
 
     <div style="display:flex; flex-wrap:wrap; gap:10px; margin: 10px 0 10px;">
       {cards.map((c) => (
         <span style="border:1px solid #ddd; padding:8px 10px; border-radius:10px; background:#fafafa;">
-          {c.label}:&nbsp;<strong>{c.value}</strong>
+          {c.label}: <strong>{c.value}</strong>
         </span>
       ))}
     </div>
@@ -113,7 +109,8 @@ const L = (lang === "de")
         <ul style="margin-top: 10px;">
           {workability.map((w) => (
             <li style="margin: 6px 0;">
-              <strong>{w.label}:</strong>&nbsp;{w.value} {w.note ? <small>{w.note}</small> : null}
+              <strong>{w.label}:</strong>{" "}{w.value}{" "}
+              {w.note ? <small>{w.note}</small> : null}
             </li>
           ))}
         </ul>
@@ -124,7 +121,7 @@ const L = (lang === "de")
         <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
           {areas.map((a) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
-              <strong>› {a.name}</strong> – {a.desc}
+              <strong>› {a.name}</strong>{" "}–{" "}{a.desc}
             </li>
           ))}
         </ul>
@@ -133,12 +130,17 @@ const L = (lang === "de")
 
         <h2>{L.hCoworking}</h2>
         <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
-          {coworkingList.map((c) => (
+          {coworking.map((c) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
               <strong>
-                › {c.url ? <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a> : c.name}
+                ›{" "}
+                {c.url ? (
+                  <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a>
+                ) : (
+                  c.name
+                )}
               </strong>{" "}
-              – {c.desc}
+              –{" "}{c.desc}
             </li>
           ))}
         </ul>
@@ -166,7 +168,7 @@ const L = (lang === "de")
         <ul style="list-style: none; padding-left: 0; margin: 0;">
           {cafesQuiet.map((x) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
-              <strong>› {x.head}:</strong>&nbsp;{x.desc}
+              <strong>› {x.head}:</strong>{" "}{x.desc}
             </li>
           ))}
         </ul>
@@ -175,7 +177,7 @@ const L = (lang === "de")
         <ul style="list-style: none; padding-left: 0; margin: 0;">
           {backup.map((b) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
-              <strong>› {b.head}:</strong>&nbsp;{b.desc}
+              <strong>› {b.head}:</strong>{" "}{b.desc}
             </li>
           ))}
         </ul>
@@ -207,13 +209,13 @@ const L = (lang === "de")
 
     <h1 style="margin: 0 0 8px;">{title}</h1>
     <p style="margin: 0 0 16px; color:#333;">
-      {L.idealFor}&nbsp;{idealFor} · <em>{L.vibe}&nbsp;{vibe}</em>
+      {L.idealFor} {idealFor} · <em>{L.vibe} {vibe}</em>
     </p>
 
     <div style="display:flex; flex-wrap:wrap; gap:10px; margin: 10px 0 10px;">
       {cards.map((c) => (
         <span style="border:1px solid #ddd; padding:8px 10px; border-radius:10px; background:#fafafa;">
-          {c.label}:&nbsp;<strong>{c.value}</strong>
+          {c.label}: <strong>{c.value}</strong>
         </span>
       ))}
     </div>
@@ -228,7 +230,8 @@ const L = (lang === "de")
         <ul style="margin-top: 10px;">
           {workability.map((w) => (
             <li style="margin: 6px 0;">
-              <strong>{w.label}:</strong>&nbsp;{w.value} {w.note ? <small>{w.note}</small> : null}
+              <strong>{w.label}:</strong>{" "}{w.value}{" "}
+              {w.note ? <small>{w.note}</small> : null}
             </li>
           ))}
         </ul>
@@ -239,7 +242,7 @@ const L = (lang === "de")
         <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
           {areas.map((a) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
-              <strong>› {a.name}</strong> – {a.desc}
+              <strong>› {a.name}</strong>{" "}–{" "}{a.desc}
             </li>
           ))}
         </ul>
@@ -248,12 +251,17 @@ const L = (lang === "de")
 
         <h2>{L.hCoworking}</h2>
         <ul style="list-style: none; padding-left: 0; margin: 10px 0 0;">
-          {coworkingList.map((c) => (
+          {coworking.map((c) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
               <strong>
-                › {c.url ? <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a> : c.name}
+                ›{" "}
+                {c.url ? (
+                  <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a>
+                ) : (
+                  c.name
+                )}
               </strong>{" "}
-              – {c.desc}
+              –{" "}{c.desc}
             </li>
           ))}
         </ul>
@@ -281,7 +289,7 @@ const L = (lang === "de")
         <ul style="list-style: none; padding-left: 0; margin: 0;">
           {cafesQuiet.map((x) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
-              <strong>› {x.head}:</strong>&nbsp;{x.desc}
+              <strong>› {x.head}:</strong>{" "}{x.desc}
             </li>
           ))}
         </ul>
@@ -290,7 +298,7 @@ const L = (lang === "de")
         <ul style="list-style: none; padding-left: 0; margin: 0;">
           {backup.map((b) => (
             <li style="padding: 10px 0; border-bottom: 1px solid #eee;">
-              <strong>› {b.head}:</strong>&nbsp;{b.desc}
+              <strong>› {b.head}:</strong>{" "}{b.desc}
             </li>
           ))}
         </ul>

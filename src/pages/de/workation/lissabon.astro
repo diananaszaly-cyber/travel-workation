@@ -1,24 +1,50 @@
 ---
-const target = "/de/workation/lissabon";
+import WorkationCityPage from "../../../components/WorkationCityPage.astro";
+
+const city = "Lissabon";
+const title = `${city}: Sonne, Cafés & Meerblick`;
 ---
 
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content={`0; url=${target}`} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="canonical" href={target} />
-    <meta name="robots" content="noindex" />
-    <title>Weiterleitung…</title>
-  </head>
-
-  <body style="font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding: 24px;">
-    <p>
-      Weiterleitung zu <a href={target}>{target}</a>…
-    </p>
-    <script>
-      window.location.replace("{target}");
-    </script>
-  </body>
-</html>
+<WorkationCityPage
+  lang="de"
+  title={title}
+  city={city}
+  backHref="/de/workation"
+  otherLangHref="/en/workation/lisbon"
+  idealFor="Solo-Remote-Worker, Paare, kleine Teams"
+  vibe="international, entspannt, kreativ"
+  cards={[
+    { label: "Timezone", value: "WET/WEST (−1h zu DE)" },
+    { label: "WLAN", value: "8/10" },
+    { label: "Lautstärke", value: "6/10" },
+    { label: "Kosten", value: "6/10" },
+  ]}
+  workability={[
+    { label: "WLAN-Zuverlässigkeit", value: "8/10" },
+    { label: "Lautstärke", value: "6/10", note: "(zentral lebhaft, außerhalb ruhiger)" },
+    { label: "Coworking-Dichte", value: "8/10" },
+    { label: "Café-Work-Freundlichkeit", value: "7/10" },
+    { label: "Sicherheit (nachts)", value: "7/10" },
+    { label: "Kosten", value: "6/10" },
+  ]}
+  areas={[
+    { name: "Santos / Cais do Sodré", desc: "zentral, viele Cafés, gute Anbindung" },
+    { name: "Príncipe Real", desc: "schön, etwas ruhiger, kreative Spots" },
+    { name: "Parque das Nações", desc: "modern, business-nah, gut für Calls" },
+  ]}
+  coworking={[
+    { name: "Second Home Lisboa", desc: "Design-Coworking, inspirierend", url: "https://secondhome.io" },
+    { name: "Heden Santa Apolónia", desc: "ruhig, guter Fokus, oft Daypasses", url: "https://www.heden.co" },
+    { name: "IDEA Spaces", desc: "mehrere Locations, flexibel", url: "https://www.ideaspace.pt" },
+  ]}
+  cafesQuiet={[
+    { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags testen (Steckdosen/WLAN)" },
+    { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
+  ]}
+  backup={[
+    { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+    { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+    { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+  ]}
+  note="Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung."
+/>

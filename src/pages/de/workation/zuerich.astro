@@ -1,69 +1,50 @@
 ---
 import WorkationCityPage from "../../../components/WorkationCityPage.astro";
 
-const lang = "de";
-
 const city = "Zürich";
-const title = `Workation in ${city}: fokussiert arbeiten & entspannt leben`;
-
-const idealFor = "Solo-Remote-Worker, Paare, kleine Teams";
-const vibe = "ruhig, sauber, effizient";
-
-const cards = [
-  { label: "Zeitzone", value: "CET/CEST" },
-  { label: "WLAN", value: "9/10" },
-  { label: "Lautstärke", value: "4/10" },
-  { label: "Kosten", value: "3/10" },
-];
-
-const workability = [
-  { label: "WLAN-Zuverlässigkeit", value: "9/10" },
-  { label: "Lautstärke", value: "4/10", note: "(meist ruhig; nightlife je nach Gebiet)" },
-  { label: "Coworking-Dichte", value: "7/10" },
-  { label: "Café-Work-Freundlichkeit", value: "7/10" },
-  { label: "Sicherheit (nachts)", value: "9/10" },
-  { label: "Kosten", value: "3/10", note: "(hoch – Budget planen)" },
-];
-
-const areas = [
-  { name: "Seefeld", desc: "ruhig, hochwertig, nah am See" },
-  { name: "Oerlikon", desc: "business-nah, gut angebunden" },
-  { name: "Kreis 4", desc: "zentral, teils lebhafter" },
-];
-
-const coworking = [
-  { name: "Impact Hub Zürich", desc: "Coworking + Community", url: "https://zurich.impacthub.ch/" },
-  { name: "Kraftwerk Zürich", desc: "Coworking/Meetings + Community-Vibe", url: "https://kraftwerkzuerich.ch/" },
-  { name: "Tipp", desc: "Bei hohen Kosten: Day-Pass vs. Paket vergleichen", url: "" },
-];
-
-const cafesQuiet = [
-  { head: "Laptopfreundliche Cafés", desc: "oft ruhiger – trotzdem Peak-Zeiten testen" },
-  { head: "Ruhige Orte", desc: "Bibliotheken, Hotel-Lobbys, Coworking-Lounges" },
-];
-
-const backup = [
-  { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
-  { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
-  { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
-];
-
-const note = "Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung.";
+const title = `${city}: High-Quality Workation (CH)`;
 ---
 
 <WorkationCityPage
-  lang={lang}
+  lang="de"
   title={title}
   city={city}
   backHref="/de/workation"
   otherLangHref="/en/workation/zurich"
-  idealFor={idealFor}
-  vibe={vibe}
-  cards={cards}
-  workability={workability}
-  areas={areas}
-  coworking={coworking}
-  cafesQuiet={cafesQuiet}
-  backup={backup}
-  note={note}
+  idealFor="Business-Remote-Worker, kleine Teams, ruhige Workation"
+  vibe="clean, sicher, hochwertig"
+  cards={[
+    { label: "Timezone", value: "CET/CEST" },
+    { label: "WLAN", value: "9/10" },
+    { label: "Lautstärke", value: "4/10" },
+    { label: "Kosten", value: "2/10" },
+  ]}
+  workability={[
+    { label: "WLAN-Zuverlässigkeit", value: "9/10" },
+    { label: "Lautstärke", value: "4/10", note: "(generell ruhig, Peak-Zeiten beachten)" },
+    { label: "Coworking-Dichte", value: "7/10" },
+    { label: "Café-Work-Freundlichkeit", value: "6/10" },
+    { label: "Sicherheit (nachts)", value: "9/10" },
+    { label: "Kosten", value: "2/10" },
+  ]}
+  areas={[
+    { name: "Kreis 1 (Altstadt)", desc: "zentral, gut erreichbar, eher teuer" },
+    { name: "Kreis 4 (Langstrasse Umgebung)", desc: "urban, viele Spots, etwas lebhafter" },
+    { name: "Oerlikon", desc: "business-nah, gut angebunden, oft ruhiger" },
+  ]}
+  coworking={[
+    { name: "Impact Hub Zürich", desc: "großes Netzwerk, flexibel", url: "https://zurich.impacthub.net" },
+    { name: "Coworking Switzerland (Übersicht)", desc: "Sammelseite für Spots", url: "https://coworkingswitzerland.ch" },
+    { name: "Co-Working in Oerlikon", desc: "ruhig, gut für Calls (Platzhalter)" },
+  ]}
+  cafesQuiet={[
+    { head: "Laptopfreundliche Cafés", desc: "unter der Woche vormittags am besten" },
+    { head: "Ruhige Orte", desc: "Bibliotheken & Hotel-Lobbys (oft top in CH)" },
+  ]}
+  backup={[
+    { head: "Plan A", desc: "WLAN am 1. Tag testen (Speedtest)" },
+    { head: "Plan B", desc: "SIM/eSIM als Hotspot-Backup" },
+    { head: "Plan C", desc: "Coworking-Daypass als Deadline-Rettung" },
+  ]}
+  note="Hinweis: Empfehlungen können Partnerlinks enthalten. Keine Rechts- oder Steuerberatung."
 />
